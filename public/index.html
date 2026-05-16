@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MOV to MP4 Converter</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="intro" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Server-side FFmpeg conversion</p>
+          <h1 id="page-title">MOV to MP4 Converter</h1>
+          <p class="lede">
+            Upload a .mov file to this server and convert it to a browser-friendly
+            .mp4 with real FFmpeg transcoding.
+          </p>
+        </div>
+        <div class="format-badge" aria-hidden="true">
+          <span>MOV</span>
+          <svg viewBox="0 0 24 24" role="img">
+            <path d="M5 12h13m-5-5 5 5-5 5" />
+          </svg>
+          <span>MP4</span>
+        </div>
+      </section>
+
+      <section class="converter" aria-label="Video converter">
+        <label class="dropzone" id="dropzone">
+          <input id="file-input" type="file" accept=".mov,video/quicktime" />
+          <span class="upload-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 15V3m0 0 4.5 4.5M12 3 7.5 7.5" />
+              <path d="M4 15v3a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-3" />
+            </svg>
+          </span>
+          <span class="drop-title">Choose a MOV file</span>
+          <span class="drop-copy">or drag and drop it here</span>
+        </label>
+
+        <div class="limit-warning" role="note">
+          Files are uploaded to this server for conversion. Keep the server running
+          until the MP4 download is ready.
+        </div>
+
+        <div class="file-panel" id="file-panel" hidden>
+          <div>
+            <p class="label">Selected file</p>
+            <p class="file-name" id="file-name"></p>
+          </div>
+          <p class="file-size" id="file-size"></p>
+        </div>
+
+        <div class="progress-panel" id="progress-panel" hidden>
+          <div class="progress-meta">
+            <span id="status-text">Preparing converter...</span>
+            <span id="progress-percent">0%</span>
+          </div>
+          <div class="progress-track" aria-hidden="true">
+            <div class="progress-bar" id="progress-bar"></div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="secondary" id="reset-button" type="button" disabled>Reset</button>
+          <button class="primary" id="convert-button" type="button" disabled>Convert to MP4</button>
+          <a class="download" id="download-link" hidden>Download MP4</a>
+        </div>
+
+        <p class="message" id="message" role="status"></p>
+      </section>
+    </main>
+  </body>
+</html>
